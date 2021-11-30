@@ -12,16 +12,19 @@ public class TestBase {
     WebDriver driver;
 
     @BeforeMethod
-    public void setUp () {
+    public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.get("https://demoqa.com/login");
-    }
-    @AfterMethod
-    public void tearDown () {
-        driver.quit();
+        driver.get("https://demoqa.com/");
+
+//     driver.get("https://demoqa.com/login");
+
     }
 
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 }

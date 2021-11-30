@@ -25,7 +25,7 @@ public class ProfilePage extends PageBase {
         return this;
     }
 
-    public LoginPage logout () {
+    public LoginPage logout() {
         System.out.println("Let's out from profile!");
         logoutBtn.click();
         return new LoginPage(driver);

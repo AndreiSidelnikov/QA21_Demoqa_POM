@@ -19,6 +19,11 @@ public class LoginPage extends PageBase {
     @FindBy(id = "login")
     WebElement loginBtn;
 
+    public LoginPage clickToLogin() {
+        loginBtn.click();
+        return this;
+    }
+
     public ProfilePage login(String userN, String password) {
         type(userName, userN);
         type(pwd, password);
