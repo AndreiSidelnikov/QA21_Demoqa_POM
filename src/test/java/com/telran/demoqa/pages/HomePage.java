@@ -4,17 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends PageBase {
-
+public class HomePage extends PageBase{
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath = "//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[6]")
-    WebElement bookStoreApplication;
+    @FindBy(xpath = "//div[@class='category-cards']/div[.='Book Store Application']")
+    WebElement bookStoreApplicationBtn;
 
-    public LoginPage clickBookStoreApplication() {
-        bookStoreApplication.click();
-        return new LoginPage(driver);
+    public BookStorePage getBookStore() {
+        clickWithJSExecutor(bookStoreApplicationBtn,0,300);
+        return new BookStorePage(driver);
     }
+
+
 }
