@@ -1,7 +1,9 @@
 package com.telran.demoqa.tests;
 
+import com.telran.demoqa.pages.MyListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
@@ -18,11 +20,13 @@ public class TestBase {
 
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
-    WebDriver driver;
+    //    public WebDriver driver;
+
+    public static EventFiringWebDriver driver;
 
     @BeforeSuite
     public void setUp() {
-        driver = new ChromeDriver();
+        driver = new EventFiringWebDriver(new ChromeDriver());
         driver.manage().window().maximize();
 
 
@@ -30,6 +34,7 @@ public class TestBase {
         //     driver.get("https://demoqa.com/login");
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.register(new MyListener());
     }
 
     @AfterSuite(enabled = false)

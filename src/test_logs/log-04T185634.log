@@ -1,0 +1,9 @@
+18:56:43.564 [main] INFO  com.telran.demoqa.tests.TestBase - Start test newWindowMessageTestwith data: []
+18:56:43.778 [main] INFO  com.telran.demoqa.tests.TestBase - Start search By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows']
+18:56:43.924 [main] INFO  com.telran.demoqa.tests.TestBase - By.xpath: //div[@class='category-cards']/div[.='Alerts, Frame & Windows'] found.
+18:56:44.183 [main] INFO  com.telran.demoqa.tests.TestBase - Start search By.xpath: //span[.='Browser Windows']
+18:56:44.275 [main] INFO  com.telran.demoqa.tests.TestBase - By.xpath: //span[.='Browser Windows'] found.
+18:56:44.387 [main] INFO  com.telran.demoqa.tests.TestBase - Start search By.id: messageWindowButton
+18:56:44.456 [main] INFO  com.telran.demoqa.tests.TestBase - By.id: messageWindowButton found.
+18:56:44.660 [main] INFO  com.telran.demoqa.tests.TestBase - PASSED: test method newWindowMessageTest
+18:56:44.660 [main] INFO  com.telran.demoqa.tests.TestBase - ========================================================
