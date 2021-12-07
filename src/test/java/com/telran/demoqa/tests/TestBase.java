@@ -1,7 +1,6 @@
 package com.telran.demoqa.tests;
 
-import com.telran.demoqa.pages.MyListener;
-import org.openqa.selenium.WebDriver;
+import com.telran.demoqa.helpers.MyListener;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;

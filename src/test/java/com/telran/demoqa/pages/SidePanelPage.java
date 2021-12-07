@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SidePanelPage extends PageBase{
+public class SidePanelPage extends PageBase {
     public SidePanelPage(WebDriver driver) {
         super(driver);
     }
@@ -14,7 +14,7 @@ public class SidePanelPage extends PageBase{
     WebElement profile;
 
     public ProfilePage selectProfile() {
-        clickWithJSExecutor(profile,0,500);
+        clickWithJSExecutor(profile, 0, 500);
         return new ProfilePage(driver);
     }
 
@@ -22,24 +22,39 @@ public class SidePanelPage extends PageBase{
     WebElement alerts;
 
     public AlertPage selectAlert() {
-    clickWithJSExecutor(alerts,0,300);
+        clickWithJSExecutor(alerts, 0, 300);
         return new AlertPage(driver);
     }
 
-
-    @FindBy (xpath = "//span[.='Browser Windows']")
-    WebElement browserWindow;
+    @FindBy(xpath = "//span[.='Browser Windows']")
+    WebElement browserWindows;
 
     public WindowPage selectBrowserWindows() {
-        clickWithJSExecutor(browserWindow,0,300);
+        clickWithJSExecutor(browserWindows, 0, 300);
         return new WindowPage(driver);
     }
 
-    @FindBy (xpath = "//span[.='Select Menu']")
+    @FindBy(xpath = "//span[.='Select Menu']")
     WebElement selectMenu;
 
-    public SelectMenuPage sesectSelectMenu() {
-    clickWithJSExecutor(selectMenu,0,500);
+    public SelectMenuPage selectSelectMenu() {
+        clickWithJSExecutor(selectMenu, 0, 700);
         return new SelectMenuPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Practice Form']")
+    WebElement practiceForm;
+
+    public FormsPage selectPracticeForm() {
+        clickWithJSExecutor(practiceForm,0,200);
+        return new FormsPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Droppable']")
+    WebElement droppable;
+
+    public DragAndDropPage selectDroppable() {
+        clickWithJSExecutor(droppable,0,500);
+        return new DragAndDropPage(driver);
     }
 }

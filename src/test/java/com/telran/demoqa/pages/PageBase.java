@@ -1,8 +1,12 @@
 package com.telran.demoqa.pages;
 
+import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.File;
+import java.io.IOException;
 
 public class PageBase {
 
@@ -35,6 +39,14 @@ public class PageBase {
         element.click();
     }
 
+    public void typeWithJSExecutor(WebElement element, int x, int y, String text) {
+        if (text!=null){
+            clickWithJSExecutor(element,x,y);
+            element.clear();
+            element.sendKeys(text);
+        }
+    }
+
     public void clickWithJSExecutor(WebElement element, int x, int y) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(" + x + "," + y + ")");
@@ -48,6 +60,18 @@ public class PageBase {
             throw new RuntimeException(e);
         }
     }
+
+    public String takeScreenshot() {
+        File tmp = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File screenshot = new File("screenshot/screen-" + System.currentTimeMillis() + ".png");
+
+        try {
+
+            Files.copy(tmp, screenshot);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return screenshot.getAbsolutePath();
+    }
 }
-
-

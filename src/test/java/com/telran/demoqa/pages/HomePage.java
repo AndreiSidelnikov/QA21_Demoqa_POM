@@ -1,7 +1,6 @@
 package com.telran.demoqa.pages;
 
 import com.telran.demoqa.pages.bookstorePages.BookStorePage;
-import com.telran.demoqa.tests.SelectMenuTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +18,7 @@ public class HomePage extends PageBase{
         return new BookStorePage(driver);
     }
 
-@FindBy(xpath = "//div[@class='category-cards']/div[.='Alerts, Frame & Windows']")
+    @FindBy(xpath = "//div[@class='category-cards']/div[.='Alerts, Frame & Windows']")
     WebElement alertsFrameAndWindow;
 
     public SidePanelPage getAlertsFrameAndWindows() {
@@ -28,10 +27,26 @@ public class HomePage extends PageBase{
     }
 
     @FindBy(xpath = "//div[@class='category-cards']/div[.='Widgets']")
-WebElement widgets;
+    WebElement widgets;
 
-    public SelectMenuPage getWidgets() {
-    clickWithJSExecutor(widgets,0,300);
-        return new SelectMenuPage(driver);
+    public SidePanelPage getWidgets() {
+        clickWithJSExecutor(widgets,0,300);
+        return new SidePanelPage(driver);
+    }
+
+    @FindBy(xpath = "//div[@class='category-cards']/div[2]")
+    WebElement form;
+
+    public SidePanelPage getForms() {
+        clickWithJSExecutor(form,0,300);
+        return new SidePanelPage(driver);
+    }
+
+    @FindBy(xpath = "//h5[.='Interactions']")
+    WebElement interactions;
+
+    public SidePanelPage getInteractions() {
+        clickWithJSExecutor(interactions,0,300);
+        return new SidePanelPage(driver);
     }
 }
