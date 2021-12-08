@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class brokenLinksForAutomationPractice {
+public class BrokenLinksForAutomationPractice {
 
     public EventFiringWebDriver driver;
 
