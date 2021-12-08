@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import javax.lang.model.util.Elements;
+
 public class SidePanelPage extends PageBase {
     public SidePanelPage(WebDriver driver) {
         super(driver);
@@ -56,5 +58,31 @@ public class SidePanelPage extends PageBase {
     public DragAndDropPage selectDroppable() {
         clickWithJSExecutor(droppable,0,500);
         return new DragAndDropPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Text Box']")
+    WebElement textBox;
+
+    public ElementsPage selectTextBox () {
+        click(textBox);
+        return new ElementsPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Links']")
+    WebElement selectLinks;
+
+    public BrokenLinksImagesPage selectLinks() {
+        clickWithJSExecutor(selectLinks, 0,700);
+        return new BrokenLinksImagesPage(driver);
+    }
+
+
+
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement selectBrokenLinksAndImages;
+
+    public BrokenLinksImagesPage selectBrokenLinks() {
+        clickWithJSExecutor(selectBrokenLinksAndImages, 0,700);
+        return new BrokenLinksImagesPage(driver);
     }
 }
