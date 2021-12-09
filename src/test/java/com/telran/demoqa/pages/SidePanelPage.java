@@ -48,7 +48,7 @@ public class SidePanelPage extends PageBase {
     WebElement practiceForm;
 
     public FormsPage selectPracticeForm() {
-        clickWithJSExecutor(practiceForm,0,200);
+        clickWithJSExecutor(practiceForm, 0, 200);
         return new FormsPage(driver);
     }
 
@@ -56,14 +56,14 @@ public class SidePanelPage extends PageBase {
     WebElement droppable;
 
     public DragAndDropPage selectDroppable() {
-        clickWithJSExecutor(droppable,0,500);
+        clickWithJSExecutor(droppable, 0, 500);
         return new DragAndDropPage(driver);
     }
 
     @FindBy(xpath = "//span[.='Text Box']")
     WebElement textBox;
 
-    public ElementsPage selectTextBox () {
+    public ElementsPage selectTextBox() {
         click(textBox);
         return new ElementsPage(driver);
     }
@@ -72,17 +72,24 @@ public class SidePanelPage extends PageBase {
     WebElement selectLinks;
 
     public BrokenLinksImagesPage selectLinks() {
-        clickWithJSExecutor(selectLinks, 0,700);
+        clickWithJSExecutor(selectLinks, 0, 700);
         return new BrokenLinksImagesPage(driver);
     }
-
 
 
     @FindBy(xpath = "//span[.='Broken Links - Images']")
     WebElement selectBrokenLinksAndImages;
 
     public BrokenLinksImagesPage selectBrokenLinks() {
-        clickWithJSExecutor(selectBrokenLinksAndImages, 0,700);
+        clickWithJSExecutor(selectBrokenLinksAndImages, 0, 700);
         return new BrokenLinksImagesPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Tool Tips']")
+    WebElement toolTips;
+
+    public ToolTipsPage selectToolTips() {
+        clickWithJSExecutor(toolTips, 0, 700);
+        return new ToolTipsPage(driver);
     }
 }

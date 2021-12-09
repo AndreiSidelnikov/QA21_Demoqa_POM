@@ -16,24 +16,24 @@ public class BrokenLinksImagesPage extends PageBase {
     }
 
     @FindBy(tagName = "a")
-    List<WebElement> alllinks;
+    List<WebElement> allLinks;
 
     public BrokenLinksImagesPage checkAllUrl() {
         String url = "";
-        System.out.println("Total links on the web page: " + alllinks.size());
-
-        Iterator<WebElement> iterator = alllinks.iterator();
+        System.out.println("Total links on the web page: " + allLinks.size());
+        //We will iterate through the list and will check the elements in the list.
+        Iterator<WebElement> iterator = allLinks.iterator();
         while (iterator.hasNext()) {
             url = iterator.next().getText();
             System.out.println(url);
         }
-    return this;
+        return this;
     }
 
     public BrokenLinksImagesPage selectBrokenLinks() {
 
-        for (int i = 0; i < alllinks.size() ; i++) {
-            WebElement element = alllinks.get(i);
+        for (int i = 0; i < allLinks.size(); i++) {
+            WebElement element = allLinks.get(i);
             String url = element.getAttribute("href");
             verifyLinks(url);
         }
@@ -43,46 +43,46 @@ public class BrokenLinksImagesPage extends PageBase {
     private void verifyLinks(String linkUrl) {
         try {
             URL url = new URL(linkUrl);
+            //Now we will be creating url connection and getting the response code
             HttpURLConnection httpURL = (HttpURLConnection) url.openConnection();
             httpURL.setConnectTimeout(5000);
             httpURL.connect();
             if (httpURL.getResponseCode() >= 400) {
-                System.out.println(linkUrl + " - " + httpURL.getResponseMessage() + "is broken link");
+                System.out.println(linkUrl + " - " + httpURL.getResponseMessage() + "is a broken link");
             } else {
                 System.out.println(linkUrl + " - " + httpURL.getResponseMessage());
             }
         } catch (Exception e) {
-            System.out.println(linkUrl + " - " + e.getMessage() + "is a broken link");
+            System.out.println(linkUrl + " - " + e.getMessage() + "broken link");
         }
     }
 
     @FindBy(tagName = "img")
-    List <WebElement> images;
+    List<WebElement> images;
 
     public BrokenLinksImagesPage checkBrokenImages() {
-        System.out.println("We have " + images.size() + "images");
+        System.out.println("We have " + images.size() + " images");
 
-        for (int index = 0; index < images.size(); index ++) {
-   WebElement img = images.get(index);
-   String imageUrl = img.getAttribute("src");
-            System.out.println("URL of Image " + (index + 1) + " is:" + imageUrl);
-            verifyLinks(imageUrl);
+        for (int index = 0; index < images.size(); index++) {
+            WebElement img = images.get(index);
+            String imageURL = img.getAttribute("src");
+            System.out.println("URL of Image " + (index + 1) + " is:" + imageURL);
+            verifyLinks(imageURL);
 
             try {
                 boolean imageDisplayed = (Boolean) ((JavascriptExecutor) driver)
                         .executeScript("return (typeof arguments[0].naturalWidth != undefined && arguments[0].naturalWidth>0);", img);
-            if (imageDisplayed) {
-                System.out.println("DISPLAY - OK");
-                System.out.println("*********");
-            }else {
-                System.out.println("DISPLAY - BROKEN");
-                System.out.println("*********");
-            }
+                if (imageDisplayed) {
+                    System.out.println("DISPLAY - OK");
+                    System.out.println("***********************************");
+                } else {
+                    System.out.println("DISPLAY - BROKEN");
+                    System.out.println("***********************************");
+                }
             } catch (Exception e) {
-                System.out.println("Error");
+                System.out.println("ERROR");
             }
         }
-
         return this;
     }
 }
